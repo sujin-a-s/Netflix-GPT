@@ -1,11 +1,30 @@
 import React, { useState } from 'react'
 import Header from './Header'
-
+import { checkValidData } from '../utils/validate' 
+import { useRef } from 'react'
 const Login = () => {
 
     const [isSigninForm,setIsSigninForm] = useState(true)
+    const[errorMessage,setErrorMessage] = useState(null);
+
+    const name = useRef(null);
+    const email = useRef(null);
+    const password = useRef(null);
+
     const toggleSigninForm = () => {
         setIsSigninForm(!isSigninForm)
+    }
+
+    const handleButtonClick = () =>{
+        //validate the form data
+        //checkValidData(email,password)
+        // console.log(email.current.value);
+        // console.log(password.current.value);
+
+        const message = checkValidData(name.current.value,email.current.value,password.current.value);
+        console.log(message);
+        setErrorMessage(message);
+
     }
   return (
 
@@ -18,29 +37,46 @@ const Login = () => {
                 alt="backgroundimage"
             />
         </div>
-        <form className='w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-70'>
+
+
+        <form onSubmit={(e)=>e.preventDefault()} className='w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-70'>
+
             <h1 className='font-bold text-2xl py-4'>
                 {isSigninForm ? "Sign-In":"Sign-Up"}
             </h1>
+
             {!isSigninForm && <input 
+                ref={name}
                 type="text" 
                 placeholder='Name' 
                 className='p-4 my-4 w-full bg-slate-700'>
             </input>}
+
             <input 
+                ref={email}
                 type="text" 
                 placeholder='Email Address' 
                 className='p-4 my-4 w-full bg-slate-700'>
             </input>
+
             <input 
+                ref={password}
                 type="password" 
                 placeholder='Password' 
                 className='p-4 my-4  w-full bg-slate-700'>
             </input>
-            <button className='p-4 my-6 w-full bg-red-600'>{isSigninForm ? "Sign-In":"Sign-Up"}</button>
-            <p  className='my-4 mx-11 cursor-pointer' 
+
+            <p className='text-red-600 font-bold text-lg'>{errorMessage}</p>
+
+            <button 
+                className='p-4 my-6 w-full bg-red-600' onClick={handleButtonClick}>
+                {isSigninForm ? "Sign-In":"Sign-Up"}
+            </button>
+
+            <p className='my-4 mx-11 cursor-pointer' 
                 onClick={toggleSigninForm}>{isSigninForm ? "New to Netflix? Sign Up Now":"Already registered. Sign in now"}
             </p>
+            
         </form>
     </div>
   )
