@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import { checkValidData } from '../utils/validate' 
-import { useRef } from 'react'
+import { useRef } from 'react';
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from '../utils/firebase';
+
 const Login = () => {
 
     const [isSigninForm,setIsSigninForm] = useState(true)
@@ -21,9 +24,51 @@ const Login = () => {
         // console.log(email.current.value);
         // console.log(password.current.value);
 
-        const message = checkValidData(name.current.value,email.current.value,password.current.value);
+        const message = checkValidData(name.current?.value,email.current.value,password.current.value);
         console.log(message);
         setErrorMessage(message);
+
+        if(message) return;
+
+        if(!isSigninForm){
+            //sign up form logic
+            createUserWithEmailAndPassword(
+                auth,
+                email.current.value,
+                password.current.value
+            )
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    console.log(user)
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorCode+" - "+errorMessage)
+                    // ..
+                });
+        }
+        else{
+            //sign in form logic
+            console.log("Signing in...");
+            signInWithEmailAndPassword(
+                auth,
+                email.current.value,
+                password.current.value
+            )
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log(user)
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorCode+" - "+errorMessage);
+                });
+        }
 
     }
   return (
@@ -54,7 +99,7 @@ const Login = () => {
 
             <input 
                 ref={email}
-                type="text" 
+                type="email" 
                 placeholder='Email Address' 
                 className='p-4 my-4 w-full bg-slate-700'>
             </input>
