@@ -18,7 +18,13 @@
 - Bugfix : if the user is not logged in Redirect /browse to login page and vice versa
 - unsubscribed to the onauthstatechange call back
 - addd hardcoded values to the constants files
-- 
+- Register TMSB API & create an aoo and get access token
+- get Data from TMBD now playing movies list API
+
+
+
+
+
 # Features
 
 - Login/Sign up 
