@@ -17,7 +17,8 @@
 - Bugfix : sign up user displayname and profile picture update
 - Bugfix : if the user is not logged in Redirect /browse to login page and vice versa
 - unsubscribed to the onauthstatechange call back
-
+- addd hardcoded values to the constants files
+- 
 # Features
 
 - Login/Sign up 
