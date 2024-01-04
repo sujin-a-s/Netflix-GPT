@@ -20,6 +20,14 @@
 - addd hardcoded values to the constants files
 - Register TMSB API & create an aoo and get access token
 - get Data from TMBD now playing movies list API
+- created custom hook for nowPlayingMovies
+- create movieSlice
+- Update Store with movie Data
+- Planning for MainContainer & secondary container
+- Fetch Data for Trailer Video
+- Update Store with Trailer Video Data
+- Embedded the youtube video and make it autoplay and mute and tailwind css to make maincontainer look awesome
+
 
 
 
