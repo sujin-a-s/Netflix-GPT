@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { removeUser } from '../utils/userSlice';
 import { LOGO } from '../utils/constant';
-
+import { toggleGptsearchView } from '../utils/gptslice';
 
 
 
@@ -17,6 +17,7 @@ const Header = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const user = useSelector(store => store.user);
+  
 
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -53,6 +54,10 @@ const Header = () => {
       });
   }
 
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptsearchView())
+  }
+
   return (
     <div className='absolute w-screen py-2 px-8 bg-gradient-to-b from-black z-10 flex justify-between' >
         <img
@@ -62,13 +67,15 @@ const Header = () => {
         />
 
         
-        {user && (<div className='flex'>
+        {user && (
+        <div className='flex'>
+          <botton onClick={handleGptSearchClick} className="py-2 cursor-pointer px-4 mx-4 my-4 rounded-sm bg-red-700 border-spacing-10 text-white"> GPT Search</botton>
           <img
               className='h-10 my-4'
               src={user?.photoURL}
               alt="usericon"
               />
-          <button onClick={handleSignOut} className=' text-red-600 font-bold text-xl mx-3 p-1  border-white'>[Sign Out]</button>
+          <button onClick={handleSignOut} className='py-2 cursor-pointer px-4 mx-4 my-4 rounded-sm bg-red-700 text-white'>Sign Out</button>
         </div>)}
     </div>
   )

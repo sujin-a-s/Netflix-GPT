@@ -7,7 +7,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { USER_AVATAR } from '../utils/constant';
+import { NETFLIX_BACKGROUND, USER_AVATAR } from '../utils/constant';
 
 const Login = () => {
 
@@ -108,7 +108,7 @@ const Login = () => {
         <Header/>
         <div className='absolute' >
             <img
-                src="https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/15feb590-3d73-45e9-9e4a-2eb334c83921/IN-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                src={NETFLIX_BACKGROUND}
                 alt="backgroundimage"
             />
         </div>
