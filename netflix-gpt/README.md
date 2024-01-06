@@ -34,7 +34,10 @@
 - TMBD image Card
 - Made the Browse page amazing with Tailwind CSS
 - usePopularMovies Custo Hooks
-- GPT search feature
+- GPT search Page
+- GPT search Bar
+- Multilanguage feature in our app
+
 
 
 

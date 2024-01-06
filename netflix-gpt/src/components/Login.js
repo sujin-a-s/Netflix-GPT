@@ -32,7 +32,7 @@ const Login = () => {
         // console.log(password.current.value);
 
         const message = checkValidData(name.current?.value,email.current.value,password.current.value);
-        console.log(message);
+        // console.log(message);
         setErrorMessage(message);
 
         if(message) return;
@@ -67,7 +67,7 @@ const Login = () => {
                             setErrorMessage(error.message);
                       });
 
-                    console.log(user);
+                    // console.log(user);
                     
            
                 })
@@ -80,7 +80,7 @@ const Login = () => {
         }
         else{
             //sign in form logic
-            console.log("Signing in...");
+            // console.log("Signing in...");
             signInWithEmailAndPassword(
                 auth,
                 email.current.value,
@@ -89,7 +89,7 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user)
+                    // console.log(user)
                     
                 })
                 .catch((error) => {
