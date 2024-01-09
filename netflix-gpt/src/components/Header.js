@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { removeUser } from '../utils/userSlice';
 import { LOGO } from '../utils/constant';
-import { toggleGptsearchView } from '../utils/gptslice';
+import { clearCard, toggleGptsearchView } from '../utils/gptslice';
 import { SUPPORTED_LANGUAGES } from '../utils/constant';
 import { changeLanguage } from '../utils/configslice';
 
@@ -57,6 +57,7 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     dispatch(toggleGptsearchView())
+    dispatch(clearCard())
   }
 
   const handleLanguageChange = (e) => {
