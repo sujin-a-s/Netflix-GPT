@@ -44,6 +44,7 @@ const Browse = () => {
             - cards * n
        */
     }
+    {console.log('OPEN_AI_KEY:', process.env.REACT_APP_OPEN_AI_KEY)}
 
     </div>
   )
