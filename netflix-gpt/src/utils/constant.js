@@ -16,3 +16,5 @@ export const SUPPORTED_LANGUAGES = [
   {identifier : "tamil" , name : "Tamil"},
   {identifier : "japanese" , name : "Japenese"}
 ]
+
+export const OPEN_AI_KEY = "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"

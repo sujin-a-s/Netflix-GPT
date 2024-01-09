@@ -66,7 +66,7 @@ const Header = () => {
   return (
     <div className='absolute w-screen py-2 px-8 bg-gradient-to-b from-black z-10 flex justify-between' >
         <img
-            className='w-44'
+            className='w-44 hover:scale-110'
             src={LOGO}
             alt="logo"
         />
@@ -75,24 +75,24 @@ const Header = () => {
         {user && (
           <div className='flex'>
 
-            { showGptSearch && <select onChange={handleLanguageChange} className=' bg-gray-900 px-4 mx-4 my-4  text-white'>
+            { showGptSearch && <select onChange={handleLanguageChange} className=' bg-gray-900 px-4 mx-4 my-4 hover:scale-105 hover:bg-gray-700 text-white'>
               {
                 SUPPORTED_LANGUAGES.map(
-                (lang) => (<option key ={lang.identifier} value={lang.identifier}>{lang.name}</option>)
+                (lang) => (<option className='' key ={lang.identifier} value={lang.identifier}>{lang.name}</option>)
                 )
               }
 
             </select>}
   
-            <botton onClick={handleGptSearchClick} className="py-2 cursor-pointer px-4 mx-4 my-4 rounded-sm bg-red-700 border-spacing-10 text-white"> {showGptSearch? "Home Page" : "GPT Search"}</botton>
+            <button onClick={handleGptSearchClick} className="py-2 cursor-pointer  hover:bg-red-600 px-4 mx-4 my-4 hover:scale-105 rounded-sm bg-red-700 border-spacing-10 text-white"> {showGptSearch? "Home Page" : "GPT Search"}</button>
 
             <img
-                className='h-10 my-4'
+                className='h-10 my-4 hover:scale-110'
                 src={user?.photoURL}
                 alt="usericon"
                 />
 
-            <button onClick={handleSignOut} className='py-2 cursor-pointer px-4 mx-4 my-4 rounded-sm bg-red-700 text-white'>Sign Out</button>
+            <button onClick={handleSignOut} className='py-2 cursor-pointer px-4 mx-4 my-4 hover:bg-red-600  rounded-sm  hover:bg-gray-600 hover:scale-105 bg-red-700 text-white'>Sign Out</button>
           </div>)
         }
     </div>
