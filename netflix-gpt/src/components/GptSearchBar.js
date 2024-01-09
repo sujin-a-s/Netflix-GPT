@@ -41,6 +41,7 @@ const GptSearchBar = () => {
     //vasoolraja mbbs ,pammal k samandham,michel madana kamarajan
     
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",")
+    if(gptMovies[0] === "Sorry")  return console.error("you request cannot be processed")
 
     //changes into an array containing five  strings 
 
