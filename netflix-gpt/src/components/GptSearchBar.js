@@ -12,12 +12,18 @@ const GptSearchBar = () => {
   const langKey = useSelector(store => store.config.lang)
   const searchText = useRef(null);
 
+
+
+
   //searrch movie in tmdb database
   const searchMovieTMDB = async (movie) => {
     const data = await fetch('https://api.themoviedb.org/3/search/movie?query='+movie+'&include_adult=false&language=en-US&page=1', API_OPTIONS)
     const json = await data.json();
     return json.results;
   }
+
+
+
   
   const handleGptSearchClick = async () => {
     console.log(searchText.current.value)
@@ -57,6 +63,9 @@ const GptSearchBar = () => {
     dispatch(addGptMovieResults({movieNames : gptMovies , movieResults : tmdbResults}))
 
   }
+
+
+  
   
 
   

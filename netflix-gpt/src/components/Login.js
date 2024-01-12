@@ -106,6 +106,7 @@ const Login = () => {
 
     <div>
         <Header/>
+        
         <div className='absolute ' >
             <img
                 src={NETFLIX_BACKGROUND}
